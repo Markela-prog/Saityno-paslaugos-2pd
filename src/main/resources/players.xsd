@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service"
+           elementFormDefault="qualified">
+
+    <xs:element name="getPlayerByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player" type="tns:playerType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player" type="tns:playerType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerByAccountEmailRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlayerByAccountEmailResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player" type="tns:playerType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllPlayersRequest"/>
+
+    <xs:element name="getAllPlayersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="players" type="tns:playerListType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="playerType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="account" type="tns:accountType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="accountType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="balance" type="xs:double"/>
+            <xs:element name="credits" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="playerListType">
+        <xs:sequence>
+            <xs:element name="player" type="tns:playerType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
